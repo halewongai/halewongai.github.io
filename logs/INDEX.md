@@ -1,4 +1,4 @@
-# OpenClaw Log Index
+# INDEX（OpenClaw 日志索引）
 
 - [2026-02-01](daily/2026-02-01.md)
 - [2026-02-02](daily/2026-02-02.md)
