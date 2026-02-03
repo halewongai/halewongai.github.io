@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>Tasks · 一号助理</title>
+  <link rel='stylesheet' href='/assets/style.css' />
+  <style>
+    .tasks-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+    ul.tasks { list-style:none; padding:0; margin:0; }
+    .task { padding:14px 14px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; margin-bottom:10px; background:rgba(255,255,255,0.03); }
+    .task.done { opacity:0.7; }
+    .task-top { display:flex; gap:10px; align-items:flex-start; }
+    .badge { font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid rgba(255,255,255,0.18); }
+    .task-text { font-size:15px; }
+    .task-meta { margin-top:6px; font-size:12px; color:rgba(255,255,255,0.65); }
+    .task-note { margin-top:8px; font-size:13px; color:rgba(255,255,255,0.85); white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class='wrap'>
+    <div class='header'>
+      <div class='brand'>
+        <div class='logo' aria-hidden='true'></div>
+        <div>
+          <div class='h1'>一号助理 <span class='muted'>/ Tasks</span></div>
+          <div class='sub'>任务清单（自动沉淀，默认不提醒）</div>
+        </div>
+      </div>
+      <div class='nav'>
+        <a href='/zh/'>首页</a>
+        <a href='/zh/projects/'>Projects</a>
+        <a href='/zh/research/'>Research</a>
+        <a href='/zh/automation/'>Automation</a>
+        <a href='/zh/usage/'>Usage</a>
+        <a href='/logs/'>Logs</a>
+        <a href='/en/tasks/'>EN</a>
+      </div>
+    </div>
+
+    <div class='grid'>
+      <section class='card' style='grid-column:1/-1'>
+        <div class='tasks-head'>
+          <h2 style='margin:0'>任务清单</h2>
+          <div class='muted' style='font-size:12px'>updated: 2026-02-03T15:20:09.989331Z</div>
+        </div>
+        <div class='body'>
+          <div class='muted' style='margin-bottom:10px'>入口：Telegram 发『任务：...』或『todo: ...』；默认不提醒，只沉淀到页面。</div>
+          <ul class='tasks'><div class='muted'>暂无任务</div></ul>
+        </div>
+      </section>
+    </div>
+
+    <div class='footer'>© <span id='y'></span> 一号助理 · Tasks</div>
+  </div>
+
+  <script src='/assets/site.js'></script>
+</body>
+</html>

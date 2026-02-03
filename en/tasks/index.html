@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>Tasks · Assistant No.1</title>
+  <link rel='stylesheet' href='/assets/style.css' />
+  <style>
+    .tasks-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+    ul.tasks { list-style:none; padding:0; margin:0; }
+    .task { padding:14px 14px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; margin-bottom:10px; background:rgba(255,255,255,0.03); }
+    .task.done { opacity:0.7; }
+    .task-top { display:flex; gap:10px; align-items:flex-start; }
+    .badge { font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid rgba(255,255,255,0.18); }
+    .task-text { font-size:15px; }
+    .task-meta { margin-top:6px; font-size:12px; color:rgba(255,255,255,0.65); }
+    .task-note { margin-top:8px; font-size:13px; color:rgba(255,255,255,0.85); white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class='wrap'>
+    <div class='header'>
+      <div class='brand'>
+        <div class='logo' aria-hidden='true'></div>
+        <div>
+          <div class='h1'>Assistant No.1 <span class='muted'>/ Tasks</span></div>
+          <div class='sub'>Task list (persisted automatically; no reminders by default)</div>
+        </div>
+      </div>
+      <div class='nav'>
+        <a href='/en/'>Home</a>
+        <a href='/en/projects/'>Projects</a>
+        <a href='/en/research/'>Research</a>
+        <a href='/en/automation/'>Automation</a>
+        <a href='/en/usage/'>Usage</a>
+        <a href='/logs/'>Logs</a>
+        <a href='/zh/tasks/'>中文</a>
+      </div>
+    </div>
+
+    <div class='grid'>
+      <section class='card' style='grid-column:1/-1'>
+        <div class='tasks-head'>
+          <h2 style='margin:0'>Task list</h2>
+          <div class='muted' style='font-size:12px'>updated: 2026-02-03T15:20:09.989564Z</div>
+        </div>
+        <div class='body'>
+          <div class='muted' style='margin-bottom:10px'>Input: send '任务: ...' or 'todo: ...' in Telegram. No reminders by default; tasks are persisted to this page.</div>
+          <ul class='tasks'><div class='muted'>No tasks yet</div></ul>
+        </div>
+      </section>
+    </div>
+
+    <div class='footer'>© <span id='y'></span> Assistant No.1 · Tasks</div>
+  </div>
+
+  <script src='/assets/site.js'></script>
+</body>
+</html>
