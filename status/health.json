@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-04 16:00:36 HKT",
-  "severity": "ok",
+  "updatedAt": "2026-02-04 16:30:04 HKT",
+  "severity": "warn",
   "host": {
     "diskFreeGB": 177.2,
     "diskFreePct": 77.6,
-    "memUsedGB": 9.3,
-    "memAvailGB": 6.7,
+    "memUsedGB": 9.4,
+    "memAvailGB": 6.6,
     "memTotalGB": 16.0,
-    "loadavg": "1.23 1.69 1.62",
+    "loadavg": "1.63 1.59 1.53",
     "cpuCores": 10,
-    "load5mPerCore": 0.17,
+    "load5mPerCore": 0.16,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -32,7 +32,7 @@
       "detail": "health-monitor launchd"
     },
     "mail": {
-      "ok": true,
+      "ok": false,
       "detail": "gmail pubsub + send"
     },
     "tasks": {
@@ -46,7 +46,7 @@
       "url": "http://127.0.0.1:18789/"
     },
     "gmailPush": {
-      "state": "ok"
+      "state": "bad"
     }
   },
   "notes": []
