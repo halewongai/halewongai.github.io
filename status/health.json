@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-04 20:05:54 HKT",
-  "severity": "ok",
+  "updatedAt": "2026-02-04 20:15:51 HKT",
+  "severity": "warn",
   "host": {
     "diskFreeGB": 177.1,
     "diskFreePct": 77.6,
-    "memUsedGB": 9.1,
-    "memAvailGB": 6.9,
+    "memUsedGB": 8.5,
+    "memAvailGB": 7.5,
     "memTotalGB": 16.0,
-    "loadavg": "1.98 1.74 1.66",
+    "loadavg": "1.28 1.46 1.53",
     "cpuCores": 10,
-    "load5mPerCore": 0.17,
+    "load5mPerCore": 0.15,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -46,8 +46,19 @@
       "url": "http://127.0.0.1:18789/"
     },
     "gmailPush": {
-      "state": "ok"
+      "subscriptionOk": true,
+      "trafficState": "stale",
+      "lastDeliveryStatus": "ok",
+      "lastDeliveryAtMs": 1770178210740,
+      "ageHours": 8.09,
+      "expirationMs": 1770733093994,
+      "topic": "projects/project-568d3d36-1fb8-462f-b8d/topics/gog-gmail-watch",
+      "labels": [
+        "INBOX"
+      ]
     }
   },
-  "notes": []
+  "notes": [
+    "gmail push traffic stale (>8h)"
+  ]
 }

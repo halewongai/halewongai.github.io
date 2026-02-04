@@ -92,7 +92,14 @@ def render(lang: str, h: dict) -> str:
     rows_modules.append(("VPN/Proxy" if not is_zh else "VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
     # Merge integrations into key components (用户要求：不单独叫“对接”)
     rows_modules.append(("Gateway" if not is_zh else "Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
-    rows_modules.append(("Gmail Push" if not is_zh else "Gmail Push", esc(integrations.get("gmailPush", {}).get("state", "-")), "Pub/Sub"))
+    gp = integrations.get("gmailPush", {}) or {}
+    # Backward compatible: older schema used {state}
+    state = gp.get("trafficState") or gp.get("state") or "-"
+    sub_ok = gp.get("subscriptionOk")
+    sub_txt = yn(sub_ok) if isinstance(sub_ok, bool) else "-"
+
+    rows_modules.append(("Gmail Push Subscription" if not is_zh else "Gmail Push 订阅", sub_txt, "watch status"))
+    rows_modules.append(("Gmail Push Traffic" if not is_zh else "Gmail Push 流量", esc(state), "freshness (soft)"))
 
     notes_html = "".join([f"<li>{esc(n)}</li>" for n in notes]) or ("<li>none</li>" if not is_zh else "<li>无</li>")
 
