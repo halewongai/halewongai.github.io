@@ -137,7 +137,7 @@ def render(lang: str, h: dict) -> str:
           <div class='kv'>
             <div class='k'>updatedAt</div><div class='mono'>{updated}</div>
             <div class='k'>disk free</div><div class='mono'>{disk_pct}% ({disk_gb} GB)</div>
-            <div class='k'>memory</div><div class='mono'>{mem_used} / {mem_total} GB (free {mem_free} GB)</div>
+            <div class='k'>memory</div><div class='mono'>{mem_used} / {mem_total} GB (avail {mem_avail} GB)</div>
             <div class='k'>loadavg</div><div class='mono'>{loadavg}</div>
             <div class='k'>swap used</div><div class='mono'>{swap} MB</div>
           </div>
@@ -199,7 +199,7 @@ def render(lang: str, h: dict) -> str:
         disk_pct=esc(str(host.get("diskFreePct", "-"))),
         disk_gb=esc(str(host.get("diskFreeGB", "-"))),
         mem_used=esc(str(host.get("memUsedGB", "-"))),
-        mem_free=esc(str(host.get("memFreeGB", "-"))),
+        mem_avail=esc(str(host.get("memAvailGB", "-"))),
         mem_total=esc(str(host.get("memTotalGB", "-"))),
         loadavg=esc(str(host.get("loadavg", "-"))),
         swap=esc(str(host.get("swapUsedMB", "-"))),
