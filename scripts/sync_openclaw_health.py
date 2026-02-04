@@ -86,7 +86,7 @@ def render(lang: str, h: dict) -> str:
     rows.append(("Tasks" if not is_zh else "任务系统", yn(systems.get("tasks", {}).get("ok")), systems.get("tasks", {}).get("detail", "")))
 
     # Modules
-    rows.append(("VPN/Proxy" if not is_zh else "功能模块：VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
+    rows.append(("VPN/Proxy" if not is_zh else "重要功能组件：VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
 
     # Integrations
     rows.append(("Gateway" if not is_zh else "对接：Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
