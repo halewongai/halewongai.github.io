@@ -79,7 +79,7 @@ def render(lang: str, h: dict) -> str:
 
     rows_systems = []
     rows_modules = []
-    rows_integrations = []
+    rows_integrations = []  # kept for JSON compatibility; not rendered separately
 
     # Systems (子系统)
     rows_systems.append(("Self-heal" if not is_zh else "自救系统", yn(systems.get("selfHeal", {}).get("ok")), systems.get("selfHeal", {}).get("detail", "")))
@@ -90,10 +90,9 @@ def render(lang: str, h: dict) -> str:
 
     # Key components (重要功能组件)
     rows_modules.append(("VPN/Proxy" if not is_zh else "VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
-
-    # Integrations (对接)
-    rows_integrations.append(("Gateway" if not is_zh else "Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
-    rows_integrations.append(("Gmail Push" if not is_zh else "Gmail Push", esc(integrations.get("gmailPush", {}).get("state", "-")), "Pub/Sub"))
+    # Merge integrations into key components (用户要求：不单独叫“对接”)
+    rows_modules.append(("Gateway" if not is_zh else "Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
+    rows_modules.append(("Gmail Push" if not is_zh else "Gmail Push", esc(integrations.get("gmailPush", {}).get("state", "-")), "Pub/Sub"))
 
     notes_html = "".join([f"<li>{esc(n)}</li>" for n in notes]) or ("<li>none</li>" if not is_zh else "<li>无</li>")
 
@@ -168,18 +167,6 @@ def render(lang: str, h: dict) -> str:
       </section>
 
       <section class='card' style='grid-column:1/-1'>
-        <h2>{integrations_title}</h2>
-        <div class='body'>
-          <table class='tbl'>
-            <thead><tr><th>{name}</th><th>{status}</th><th>{detail}</th></tr></thead>
-            <tbody>
-              {rows_integrations}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class='card' style='grid-column:1/-1'>
         <h2>{notes_title}</h2>
         <div class='body'><ul>{notes}</ul></div>
       </section>
@@ -213,7 +200,6 @@ def render(lang: str, h: dict) -> str:
         swap=esc(str(host.get("swapUsedMB", "-"))),
         systems_title=("子系统" if is_zh else "Systems"),
         modules_title=("重要功能组件" if is_zh else "Key components"),
-        integrations_title=("对接" if is_zh else "Integrations"),
         name=("名称" if is_zh else "Name"),
         status=("状态" if is_zh else "Status"),
         detail=("细节" if is_zh else "Detail"),
@@ -222,7 +208,6 @@ def render(lang: str, h: dict) -> str:
         sev_color=sev_color(sev),
         rows_systems="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows_systems]),
         rows_modules="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows_modules]),
-        rows_integrations="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows_integrations]),
     )
 
 
