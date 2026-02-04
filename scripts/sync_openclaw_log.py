@@ -63,6 +63,8 @@ def build_html_index(index_md: Path, out_html: Path) -> None:
       <a href=\"/en/\">Home</a>
       <a href=\"/zh/\">中文</a>
       <a href=\"/logs/\">Logs</a>
+      <a href=\"/en/tasks/\">Tasks</a>
+      <a href=\"/en/status/\">Status</a>
       <a href=\"https://github.com/halewongai\" target=\"_blank\" rel=\"noreferrer\">GitHub</a>
     </div>
   </div>

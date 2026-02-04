@@ -118,6 +118,7 @@ def render_page(lang: str, tasks) -> str:
         <a href='/{lang}/automation/'>Automation</a>
         <a href='/{lang}/usage/'>Usage</a>
         <a href='/logs/'>Logs</a>
+        <a href='/{lang}/status/'>Status</a>
         <a href='{other_href}'>{other_lang}</a>
       </div>
     </div>

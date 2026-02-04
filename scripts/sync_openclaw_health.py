@@ -125,6 +125,7 @@ def render(lang: str, h: dict) -> str:
         <a href='/{lang}/'>{home}</a>
         <a href='/logs/'>Logs</a>
         <a href='/{lang}/tasks/'>Tasks</a>
+        <a href='/{lang}/status/'>Status</a>
         <a href='/{other_lang}/status/'>{other_lang_label}</a>
       </div>
     </div>
