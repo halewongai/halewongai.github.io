@@ -44,7 +44,7 @@
         </div>
       </section>
 
-      <section class='card' style='grid-column:1/-1'>
+      <section class='card'>
         <h2>子系统</h2>
         <div class='body'>
           <table class='tbl'>
@@ -55,9 +55,31 @@
 <tr><td>监控系统</td><td class='mono'>OK</td><td class='mono'>health-monitor launchd</td></tr>
 <tr><td>邮件系统</td><td class='mono'>OK</td><td class='mono'>gmail pubsub + send</td></tr>
 <tr><td>任务系统</td><td class='mono'>OK</td><td class='mono'>local tasks.json + pages</td></tr>
-<tr><td>重要功能组件：VPN/代理</td><td class='mono'>OK</td><td class='mono'>mihomo 127.0.0.1:7890</td></tr>
-<tr><td>对接：Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
-<tr><td>对接：Gmail Push</td><td class='mono'>ok</td><td class='mono'>Pub/Sub</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card'>
+        <h2>重要功能组件</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>名称</th><th>状态</th><th>细节</th></tr></thead>
+            <tbody>
+              <tr><td>VPN/代理</td><td class='mono'>OK</td><td class='mono'>mihomo 127.0.0.1:7890</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card' style='grid-column:1/-1'>
+        <h2>对接</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>名称</th><th>状态</th><th>细节</th></tr></thead>
+            <tbody>
+              <tr><td>Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
+<tr><td>Gmail Push</td><td class='mono'>ok</td><td class='mono'>Pub/Sub</td></tr>
             </tbody>
           </table>
         </div>

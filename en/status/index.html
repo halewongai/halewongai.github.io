@@ -44,8 +44,8 @@
         </div>
       </section>
 
-      <section class='card' style='grid-column:1/-1'>
-        <h2>Subsystems</h2>
+      <section class='card'>
+        <h2>Systems</h2>
         <div class='body'>
           <table class='tbl'>
             <thead><tr><th>Name</th><th>Status</th><th>Detail</th></tr></thead>
@@ -55,8 +55,30 @@
 <tr><td>Monitoring</td><td class='mono'>OK</td><td class='mono'>health-monitor launchd</td></tr>
 <tr><td>Mail</td><td class='mono'>OK</td><td class='mono'>gmail pubsub + send</td></tr>
 <tr><td>Tasks</td><td class='mono'>OK</td><td class='mono'>local tasks.json + pages</td></tr>
-<tr><td>VPN/Proxy</td><td class='mono'>OK</td><td class='mono'>mihomo 127.0.0.1:7890</td></tr>
-<tr><td>Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card'>
+        <h2>Key components</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>Name</th><th>Status</th><th>Detail</th></tr></thead>
+            <tbody>
+              <tr><td>VPN/Proxy</td><td class='mono'>OK</td><td class='mono'>mihomo 127.0.0.1:7890</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card' style='grid-column:1/-1'>
+        <h2>Integrations</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>Name</th><th>Status</th><th>Detail</th></tr></thead>
+            <tbody>
+              <tr><td>Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
 <tr><td>Gmail Push</td><td class='mono'>ok</td><td class='mono'>Pub/Sub</td></tr>
             </tbody>
           </table>

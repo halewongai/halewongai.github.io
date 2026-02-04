@@ -77,20 +77,23 @@ def render(lang: str, h: dict) -> str:
             return "BAD"
         return "-"
 
-    rows = []
-    # Systems
-    rows.append(("Self-heal" if not is_zh else "自救系统", yn(systems.get("selfHeal", {}).get("ok")), systems.get("selfHeal", {}).get("detail", "")))
-    rows.append(("Logging" if not is_zh else "日志系统", yn(systems.get("logging", {}).get("ok")), systems.get("logging", {}).get("detail", "")))
-    rows.append(("Monitoring" if not is_zh else "监控系统", yn(systems.get("monitoring", {}).get("ok")), systems.get("monitoring", {}).get("detail", "")))
-    rows.append(("Mail" if not is_zh else "邮件系统", yn(systems.get("mail", {}).get("ok")), systems.get("mail", {}).get("detail", "")))
-    rows.append(("Tasks" if not is_zh else "任务系统", yn(systems.get("tasks", {}).get("ok")), systems.get("tasks", {}).get("detail", "")))
+    rows_systems = []
+    rows_modules = []
+    rows_integrations = []
 
-    # Modules
-    rows.append(("VPN/Proxy" if not is_zh else "重要功能组件：VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
+    # Systems (子系统)
+    rows_systems.append(("Self-heal" if not is_zh else "自救系统", yn(systems.get("selfHeal", {}).get("ok")), systems.get("selfHeal", {}).get("detail", "")))
+    rows_systems.append(("Logging" if not is_zh else "日志系统", yn(systems.get("logging", {}).get("ok")), systems.get("logging", {}).get("detail", "")))
+    rows_systems.append(("Monitoring" if not is_zh else "监控系统", yn(systems.get("monitoring", {}).get("ok")), systems.get("monitoring", {}).get("detail", "")))
+    rows_systems.append(("Mail" if not is_zh else "邮件系统", yn(systems.get("mail", {}).get("ok")), systems.get("mail", {}).get("detail", "")))
+    rows_systems.append(("Tasks" if not is_zh else "任务系统", yn(systems.get("tasks", {}).get("ok")), systems.get("tasks", {}).get("detail", "")))
 
-    # Integrations
-    rows.append(("Gateway" if not is_zh else "对接：Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
-    rows.append(("Gmail Push" if not is_zh else "对接：Gmail Push", esc(integrations.get("gmailPush", {}).get("state", "-")), "Pub/Sub"))
+    # Key components (重要功能组件)
+    rows_modules.append(("VPN/Proxy" if not is_zh else "VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
+
+    # Integrations (对接)
+    rows_integrations.append(("Gateway" if not is_zh else "Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
+    rows_integrations.append(("Gmail Push" if not is_zh else "Gmail Push", esc(integrations.get("gmailPush", {}).get("state", "-")), "Pub/Sub"))
 
     notes_html = "".join([f"<li>{esc(n)}</li>" for n in notes]) or ("<li>none</li>" if not is_zh else "<li>无</li>")
 
@@ -140,13 +143,37 @@ def render(lang: str, h: dict) -> str:
         </div>
       </section>
 
-      <section class='card' style='grid-column:1/-1'>
-        <h2>{subs_title}</h2>
+      <section class='card'>
+        <h2>{systems_title}</h2>
         <div class='body'>
           <table class='tbl'>
             <thead><tr><th>{name}</th><th>{status}</th><th>{detail}</th></tr></thead>
             <tbody>
-              {rows}
+              {rows_systems}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card'>
+        <h2>{modules_title}</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>{name}</th><th>{status}</th><th>{detail}</th></tr></thead>
+            <tbody>
+              {rows_modules}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card' style='grid-column:1/-1'>
+        <h2>{integrations_title}</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>{name}</th><th>{status}</th><th>{detail}</th></tr></thead>
+            <tbody>
+              {rows_integrations}
             </tbody>
           </table>
         </div>
@@ -184,14 +211,18 @@ def render(lang: str, h: dict) -> str:
         disk_gb=esc(str(host.get("diskFreeGB", "-"))),
         loadavg=esc(str(host.get("loadavg", "-"))),
         swap=esc(str(host.get("swapUsedMB", "-"))),
-        subs_title=("子系统" if is_zh else "Subsystems"),
+        systems_title=("子系统" if is_zh else "Systems"),
+        modules_title=("重要功能组件" if is_zh else "Key components"),
+        integrations_title=("对接" if is_zh else "Integrations"),
         name=("名称" if is_zh else "Name"),
         status=("状态" if is_zh else "Status"),
         detail=("细节" if is_zh else "Detail"),
         notes_title=("备注" if is_zh else "Notes"),
         notes=notes_html,
         sev_color=sev_color(sev),
-        rows="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows]),
+        rows_systems="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows_systems]),
+        rows_modules="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows_modules]),
+        rows_integrations="\n".join([f"<tr><td>{esc(a)}</td><td class='mono'>{esc(b)}</td><td class='mono'>{esc(c)}</td></tr>" for a,b,c in rows_integrations]),
     )
 
 
