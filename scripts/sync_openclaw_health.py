@@ -138,7 +138,7 @@ def render(lang: str, h: dict) -> str:
             <div class='k'>updatedAt</div><div class='mono'>{updated}</div>
             <div class='k'>disk free</div><div class='mono'>{disk_pct}% ({disk_gb} GB)</div>
             <div class='k'>memory</div><div class='mono'>{mem_used} / {mem_total} GB (avail {mem_avail} GB)</div>
-            <div class='k'>loadavg</div><div class='mono'>{loadavg}</div>
+            <div class='k'>loadavg</div><div class='mono'>{loadavg} (5m/core: {load_ratio})</div>
             <div class='k'>swap used</div><div class='mono'>{swap} MB</div>
           </div>
         </div>
@@ -202,6 +202,7 @@ def render(lang: str, h: dict) -> str:
         mem_avail=esc(str(host.get("memAvailGB", "-"))),
         mem_total=esc(str(host.get("memTotalGB", "-"))),
         loadavg=esc(str(host.get("loadavg", "-"))),
+        load_ratio=esc(str(host.get("load5mPerCore", "-"))),
         swap=esc(str(host.get("swapUsedMB", "-"))),
         systems_title=("子系统" if is_zh else "Systems"),
         modules_title=("重要功能组件" if is_zh else "Key components"),
