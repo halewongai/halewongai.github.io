@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>Status · 一号助理</title>
+  <link rel='stylesheet' href='/assets/style.css' />
+  <style>
+    .sev-dot { display:inline-block; width:10px; height:10px; border-radius:50%; background:#2ecc71; margin-right:8px; }
+    .kv { display:grid; grid-template-columns:160px 1fr; gap:8px 12px; }
+    .tbl { width:100%; border-collapse:collapse; }
+    .tbl td, .tbl th { border-bottom:1px solid rgba(255,255,255,0.08); padding:10px 8px; text-align:left; }
+    .mono { font-family: Menlo, Consolas, monospace; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class='wrap'>
+    <div class='header'>
+      <div class='brand'>
+        <div class='logo' aria-hidden='true'></div>
+        <div>
+          <div class='h1'>一号助理 <span class='muted'>/ Status</span></div>
+          <div class='sub'>机器与子系统健康状态（每小时更新）</div>
+        </div>
+      </div>
+      <div class='nav'>
+        <a href='/zh/'>首页</a>
+        <a href='/logs/'>Logs</a>
+        <a href='/zh/tasks/'>Tasks</a>
+        <a href='/en/status/'>EN</a>
+      </div>
+    </div>
+
+    <div class='grid'>
+      <section class='card' style='grid-column:1/-1'>
+        <h2 style='margin-top:0'><span class='sev-dot'></span>总体: ok</h2>
+        <div class='body'>
+          <div class='kv'>
+            <div class='k'>updatedAt</div><div class='mono'>2026-02-04T00:31:12.154806Z</div>
+            <div class='k'>disk free</div><div class='mono'>77.6% (190301851648 bytes)</div>
+            <div class='k'>loadavg</div><div class='mono'>1.36 1.55 1.62</div>
+            <div class='k'>swap used</div><div class='mono'>0.00 MB</div>
+          </div>
+        </div>
+      </section>
+
+      <section class='card' style='grid-column:1/-1'>
+        <h2>子系统</h2>
+        <div class='body'>
+          <table class='tbl'>
+            <thead><tr><th>名称</th><th>状态</th><th>细节</th></tr></thead>
+            <tbody>
+              <tr><td>Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
+<tr><td>代理/VPN（mihomo）</td><td class='mono'>OK</td><td class='mono'>127.0.0.1:7890</td></tr>
+<tr><td>Gmail 推送</td><td class='mono'>ok</td><td class='mono'>Pub/Sub</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='card' style='grid-column:1/-1'>
+        <h2>备注</h2>
+        <div class='body'><ul><li>无</li></ul></div>
+      </section>
+
+      <section class='card' style='grid-column:1/-1'>
+        <h2>Raw</h2>
+        <div class='body mono'><a href='/status/health.json'>/status/health.json</a></div>
+      </section>
+    </div>
+
+    <div class='footer'>© <span id='y'></span> 一号助理 · Status</div>
+  </div>
+  <script src='/assets/site.js'></script>
+</body>
+</html>
