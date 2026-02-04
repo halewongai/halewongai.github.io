@@ -16,7 +16,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-SRC = Path("/Users/hale/Desktop/openclaw_state/health.json")
+SRC = Path("/Users/hale/Library/Application Support/openclaw_state/health.json")
 REPO = Path(__file__).resolve().parents[1]
 OUT_JSON = REPO / "status" / "health.json"
 OUT_ZH = REPO / "zh" / "status" / "index.html"
