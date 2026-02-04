@@ -36,9 +36,9 @@
         <h2 style='margin-top:0'><span class='sev-dot'></span>总体: ok</h2>
         <div class='body'>
           <div class='kv'>
-            <div class='k'>updatedAt</div><div class='mono'>2026-02-04T00:31:12.154806Z</div>
-            <div class='k'>disk free</div><div class='mono'>77.6% (190301851648 bytes)</div>
-            <div class='k'>loadavg</div><div class='mono'>1.36 1.55 1.62</div>
+            <div class='k'>updatedAt</div><div class='mono'>2026-02-04T00:44:20.966689Z</div>
+            <div class='k'>disk free</div><div class='mono'>77.6% (177.2 GB)</div>
+            <div class='k'>loadavg</div><div class='mono'>1.31 1.67 1.79</div>
             <div class='k'>swap used</div><div class='mono'>0.00 MB</div>
           </div>
         </div>
@@ -50,9 +50,14 @@
           <table class='tbl'>
             <thead><tr><th>名称</th><th>状态</th><th>细节</th></tr></thead>
             <tbody>
-              <tr><td>Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
-<tr><td>代理/VPN（mihomo）</td><td class='mono'>OK</td><td class='mono'>127.0.0.1:7890</td></tr>
-<tr><td>Gmail 推送</td><td class='mono'>ok</td><td class='mono'>Pub/Sub</td></tr>
+              <tr><td>自救系统</td><td class='mono'>OK</td><td class='mono'>network-watchdog launchd</td></tr>
+<tr><td>日志系统</td><td class='mono'>OK</td><td class='mono'>desktop log + pages sync</td></tr>
+<tr><td>监控系统</td><td class='mono'>OK</td><td class='mono'>health-monitor launchd</td></tr>
+<tr><td>邮件系统</td><td class='mono'>OK</td><td class='mono'>gmail pubsub + send</td></tr>
+<tr><td>任务系统</td><td class='mono'>OK</td><td class='mono'>local tasks.json + pages</td></tr>
+<tr><td>功能模块：VPN/代理</td><td class='mono'>OK</td><td class='mono'>mihomo 127.0.0.1:7890</td></tr>
+<tr><td>对接：Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
+<tr><td>对接：Gmail Push</td><td class='mono'>ok</td><td class='mono'>Pub/Sub</td></tr>
             </tbody>
           </table>
         </div>

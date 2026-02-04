@@ -65,7 +65,9 @@ def render(lang: str, h: dict) -> str:
     sev = h.get("severity", "unknown")
     updated = h.get("updatedAt", "")
     host = h.get("host", {})
-    subs = h.get("subsystems", {})
+    systems = h.get("systems", {})
+    modules = h.get("modules", {})
+    integrations = h.get("integrations", {})
     notes = h.get("notes", []) or []
 
     def yn(v):
@@ -76,9 +78,19 @@ def render(lang: str, h: dict) -> str:
         return "-"
 
     rows = []
-    rows.append(("Gateway" if not is_zh else "Gateway", yn(subs.get("gateway", {}).get("ok")), subs.get("gateway", {}).get("url", "")))
-    rows.append(("VPN/Proxy (mihomo)" if not is_zh else "代理/VPN（mihomo）", yn(subs.get("mihomo", {}).get("ok")), "127.0.0.1:7890"))
-    rows.append(("Gmail Push" if not is_zh else "Gmail 推送", esc(subs.get("gmail", {}).get("state", "-")), "Pub/Sub"))
+    # Systems
+    rows.append(("Self-heal" if not is_zh else "自救系统", yn(systems.get("selfHeal", {}).get("ok")), systems.get("selfHeal", {}).get("detail", "")))
+    rows.append(("Logging" if not is_zh else "日志系统", yn(systems.get("logging", {}).get("ok")), systems.get("logging", {}).get("detail", "")))
+    rows.append(("Monitoring" if not is_zh else "监控系统", yn(systems.get("monitoring", {}).get("ok")), systems.get("monitoring", {}).get("detail", "")))
+    rows.append(("Mail" if not is_zh else "邮件系统", yn(systems.get("mail", {}).get("ok")), systems.get("mail", {}).get("detail", "")))
+    rows.append(("Tasks" if not is_zh else "任务系统", yn(systems.get("tasks", {}).get("ok")), systems.get("tasks", {}).get("detail", "")))
+
+    # Modules
+    rows.append(("VPN/Proxy" if not is_zh else "功能模块：VPN/代理", yn(modules.get("vpnProxy", {}).get("ok")), modules.get("vpnProxy", {}).get("detail", "")))
+
+    # Integrations
+    rows.append(("Gateway" if not is_zh else "对接：Gateway", yn(integrations.get("gateway", {}).get("ok")), integrations.get("gateway", {}).get("url", "")))
+    rows.append(("Gmail Push" if not is_zh else "对接：Gmail Push", esc(integrations.get("gmailPush", {}).get("state", "-")), "Pub/Sub"))
 
     notes_html = "".join([f"<li>{esc(n)}</li>" for n in notes]) or ("<li>none</li>" if not is_zh else "<li>无</li>")
 
@@ -121,7 +133,7 @@ def render(lang: str, h: dict) -> str:
         <div class='body'>
           <div class='kv'>
             <div class='k'>updatedAt</div><div class='mono'>{updated}</div>
-            <div class='k'>disk free</div><div class='mono'>{disk_pct}% ({disk_b} bytes)</div>
+            <div class='k'>disk free</div><div class='mono'>{disk_pct}% ({disk_gb} GB)</div>
             <div class='k'>loadavg</div><div class='mono'>{loadavg}</div>
             <div class='k'>swap used</div><div class='mono'>{swap} MB</div>
           </div>
@@ -169,7 +181,7 @@ def render(lang: str, h: dict) -> str:
         sev=esc(sev),
         updated=esc(updated),
         disk_pct=esc(str(host.get("diskFreePct", "-"))),
-        disk_b=esc(str(host.get("diskFreeBytes", "-"))),
+        disk_gb=esc(str(host.get("diskFreeGB", "-"))),
         loadavg=esc(str(host.get("loadavg", "-"))),
         swap=esc(str(host.get("swapUsedMB", "-"))),
         subs_title=("子系统" if is_zh else "Subsystems"),

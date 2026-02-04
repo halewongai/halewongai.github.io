@@ -1,22 +1,46 @@
 {
-  "updatedAt": "2026-02-04T00:31:12.154806Z",
+  "updatedAt": "2026-02-04T00:44:20.966689Z",
   "severity": "ok",
   "host": {
-    "diskFreeBytes": 190301851648,
+    "diskFreeGB": 177.2,
     "diskFreePct": 77.6,
-    "loadavg": "1.36 1.55 1.62",
+    "loadavg": "1.31 1.67 1.79",
     "swapUsedMB": "0.00"
   },
-  "subsystems": {
+  "modules": {
+    "vpnProxy": {
+      "ok": true,
+      "detail": "mihomo 127.0.0.1:7890"
+    }
+  },
+  "systems": {
+    "selfHeal": {
+      "ok": true,
+      "detail": "network-watchdog launchd"
+    },
+    "logging": {
+      "ok": true,
+      "detail": "desktop log + pages sync"
+    },
+    "monitoring": {
+      "ok": true,
+      "detail": "health-monitor launchd"
+    },
+    "mail": {
+      "ok": true,
+      "detail": "gmail pubsub + send"
+    },
+    "tasks": {
+      "ok": true,
+      "detail": "local tasks.json + pages"
+    }
+  },
+  "integrations": {
     "gateway": {
       "ok": true,
       "url": "http://127.0.0.1:18789/"
     },
-    "mihomo": {
-      "ok": true,
-      "port": 7890
-    },
-    "gmail": {
+    "gmailPush": {
       "state": "ok"
     }
   },
