@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-02-04T00:44:20.966689Z",
+  "updatedAt": "2026-02-04 09:02:28 HKT",
   "severity": "ok",
   "host": {
     "diskFreeGB": 177.2,
     "diskFreePct": 77.6,
-    "loadavg": "1.31 1.67 1.79",
+    "loadavg": "1.67 1.45 1.46",
     "swapUsedMB": "0.00"
   },
   "modules": {
