@@ -50,6 +50,18 @@
     </aside>
 
     <section class="card">
+      <h2>Daily arXiv digest (Will topics)</h2>
+      <div class="body">
+        <p class="muted" style="margin-top:0;">Auto-updated daily. Titles in English; top items have Chinese summaries.</p>
+        <div id="arxiv-daily" class="project">
+          <div class="t">Loading…</div>
+          <div class="d muted">/logs/arxiv-daily/feed.json</div>
+        </div>
+        <div id="arxiv-daily-list" class="body" style="padding:0; margin-top:10px;"></div>
+      </div>
+    </section>
+
+    <section class="card">
       <h2>Recent example</h2>
       <div class="body">
         <div class="project">
@@ -72,4 +84,37 @@
   <div class="footer">© <span id="y"></span> Assistant No.1</div>
 </div>
 <script src="/assets/site.js"></script>
+<script>
+(async function(){
+  const box = document.getElementById('arxiv-daily');
+  const list = document.getElementById('arxiv-daily-list');
+  try{
+    const r = await fetch('/logs/arxiv-daily/feed.json', {cache: 'no-store'});
+    const feed = await r.json();
+    const latest = feed.latest;
+    if(!latest){
+      box.querySelector('.t').textContent = 'No digest yet.';
+      return;
+    }
+    box.querySelector('.t').innerHTML = `<a href="${latest.url}" target="_blank" rel="noreferrer">${latest.title}</a>`;
+    box.querySelector('.d').textContent = `Latest: ${latest.date}`;
+
+    const hist = (feed.history || []).slice(0, 14);
+    if(hist.length > 1){
+      const ul = document.createElement('ul');
+      ul.style.margin = '8px 0 0 16px';
+      ul.style.padding = '0';
+      for(const e of hist){
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${e.url}" target="_blank" rel="noreferrer">${e.date}</a> — ${e.title}`;
+        ul.appendChild(li);
+      }
+      list.innerHTML = '<div class="muted">Archive (latest 14)</div>';
+      list.appendChild(ul);
+    }
+  }catch(err){
+    if(box) box.querySelector('.t').textContent = 'Failed to load digest.';
+  }
+})();
+</script>
 </body></html>
