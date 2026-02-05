@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-06 03:30:04 HKT",
+  "updatedAt": "2026-02-06 04:30:04 HKT",
   "severity": "ok",
   "host": {
     "diskFreeGB": 171.9,
@@ -7,9 +7,9 @@
     "memUsedGB": 9.9,
     "memAvailGB": 6.1,
     "memTotalGB": 16.0,
-    "loadavg": "1.36 1.51 1.68",
+    "loadavg": "1.18 1.38 1.47",
     "cpuCores": 10,
-    "load5mPerCore": 0.15,
+    "load5mPerCore": 0.14,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -50,7 +50,7 @@
       "trafficState": "stale",
       "lastDeliveryStatus": "ok",
       "lastDeliveryAtMs": 1770178210740,
-      "ageHours": 39.33,
+      "ageHours": 40.33,
       "expirationMs": 1770733093994,
       "topic": "projects/project-568d3d36-1fb8-462f-b8d/topics/gog-gmail-watch",
       "labels": [
