@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-06 15:30:04 HKT",
+  "updatedAt": "2026-02-06 16:30:04 HKT",
   "severity": "warn",
   "host": {
     "diskFreeGB": 170.6,
     "diskFreePct": 74.7,
-    "memUsedGB": 10.2,
-    "memAvailGB": 5.8,
+    "memUsedGB": 9.5,
+    "memAvailGB": 6.5,
     "memTotalGB": 16.0,
-    "loadavg": "1.71 2.01 1.89",
+    "loadavg": "1.46 1.90 2.08",
     "cpuCores": 10,
-    "load5mPerCore": 0.2,
+    "load5mPerCore": 0.19,
     "swapUsedMB": "0.00"
   },
   "modules": {
