@@ -13,15 +13,11 @@ This is a lightweight status page; no secrets.
 """
 
 import json
-import os
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Source of truth is the Desktop mirror produced by health-monitor.
-# (The raw state is also written under /Users/hale/Library/Application Support/openclaw_state,
-# but the Desktop mirror is what our cron and ops conventionally treat as canonical.)
-SRC = Path("/Users/hale/Desktop/openclaw_state/health.json")
+# Source of truth: health-monitor output (root writes here, then syncs to Pages).
+SRC = Path("/Users/hale/Library/Application Support/openclaw_state/health.json")
 REPO = Path(__file__).resolve().parents[1]
 OUT_JSON = REPO / "status" / "health.json"
 OUT_ZH = REPO / "zh" / "status" / "index.html"
@@ -51,60 +47,9 @@ def load_health():
         }
     return json.loads(SRC.read_text(encoding="utf-8"))
 
-
-def load_llm_quota() -> dict:
-    """Fetch model quota/usage snapshot for status page.
-
-    Uses OpenClaw CLI (read-only). Safe to publish: contains only percentages + reset times.
-    """
-    try:
-        env = dict(**os.environ)
-        # The OpenClaw agent auth/profile store lives under /var/root in this setup.
-        # This script is often run as `hale` via cron; FORCE HOME here so `openclaw status --usage`
-        # can see the correct provider/quota snapshot.
-        env["HOME"] = "/var/root"
-
-        p = subprocess.run(
-            ["openclaw", "status", "--usage", "--json"],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=20,
-            env=env,
-        )
-        j = json.loads(p.stdout)
-        usage = j.get("usage") or {}
-        providers = usage.get("providers") or []
-        # take the first provider (usually openai-codex)
-        if not providers:
-            return {"ok": False, "detail": "no providers"}
-        pr = providers[0]
-        windows = pr.get("windows") or []
-        out = {
-            "ok": True,
-            "provider": pr.get("provider"),
-            "displayName": pr.get("displayName"),
-            "plan": pr.get("plan"),
-            "updatedAt": usage.get("updatedAt"),
-            "windows": [],
-        }
-        for w in windows:
-            used = w.get("usedPercent")
-            try:
-                used_i = int(used)
-            except Exception:
-                used_i = None
-            out["windows"].append(
-                {
-                    "label": w.get("label"),
-                    "usedPercent": used_i,
-                    "remainPercent": (None if used_i is None else max(0, 100 - used_i)),
-                    "resetAt": w.get("resetAt"),
-                }
-            )
-        return out
-    except Exception as e:
-        return {"ok": False, "detail": str(e)}
+# NOTE: LLM quota is collected by the root health-monitor and written into health.json.
+# This publish script should not attempt to re-collect quota (cron PATH/HOME variance can
+# accidentally wipe the field with 'no providers').
 
 
 def sev_color(sev: str) -> str:
@@ -303,7 +248,6 @@ def render(lang: str, h: dict) -> str:
 
 def main():
     h = load_health()
-    h["llmQuota"] = load_llm_quota()
 
     (REPO / "status").mkdir(parents=True, exist_ok=True)
     (REPO / "zh" / "status").mkdir(parents=True, exist_ok=True)
