@@ -60,24 +60,7 @@
   },
   "notes": [],
   "llmQuota": {
-    "ok": true,
-    "provider": "openai-codex",
-    "displayName": "Codex",
-    "plan": "plus ($0.00)",
-    "updatedAt": 1770381095503,
-    "windows": [
-      {
-        "label": "5h",
-        "usedPercent": 17,
-        "remainPercent": 83,
-        "resetAt": 1770388506000
-      },
-      {
-        "label": "Day",
-        "usedPercent": 56,
-        "remainPercent": 44,
-        "resetAt": 1770685673000
-      }
-    ]
+    "ok": false,
+    "detail": "no providers"
   }
 }
