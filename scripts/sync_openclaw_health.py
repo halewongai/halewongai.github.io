@@ -57,8 +57,9 @@ def load_llm_quota() -> dict:
     try:
         env = dict(**os.environ)
         # The OpenClaw agent auth/profile store lives under /var/root in this setup.
-        # When running as hale (cron), point HOME there so `openclaw status --usage` can see providers.
-        env.setdefault("HOME", "/var/root")
+        # This script is often run as `hale` via cron; FORCE HOME here so `openclaw status --usage`
+        # can see the correct provider/quota snapshot.
+        env["HOME"] = "/var/root"
 
         p = subprocess.run(
             ["openclaw", "status", "--usage", "--json"],

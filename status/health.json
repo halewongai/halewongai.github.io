@@ -62,7 +62,24 @@
     "gmail push traffic stale (>8h)"
   ],
   "llmQuota": {
-    "ok": false,
-    "detail": "no providers"
+    "ok": true,
+    "provider": "openai-codex",
+    "displayName": "Codex",
+    "plan": "plus ($0.00)",
+    "updatedAt": 1770361448505,
+    "windows": [
+      {
+        "label": "5h",
+        "usedPercent": 6,
+        "remainPercent": 94,
+        "resetAt": 1770370506000
+      },
+      {
+        "label": "Day",
+        "usedPercent": 40,
+        "remainPercent": 60,
+        "resetAt": 1770685673000
+      }
+    ]
   }
 }
