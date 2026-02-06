@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-06 14:30:05 HKT",
-  "severity": "ok",
+  "updatedAt": "2026-02-06 15:30:04 HKT",
+  "severity": "warn",
   "host": {
     "diskFreeGB": 170.6,
     "diskFreePct": 74.7,
-    "memUsedGB": 9.5,
-    "memAvailGB": 6.5,
+    "memUsedGB": 10.2,
+    "memAvailGB": 5.8,
     "memTotalGB": 16.0,
-    "loadavg": "1.24 1.68 1.73",
+    "loadavg": "1.71 2.01 1.89",
     "cpuCores": 10,
-    "load5mPerCore": 0.17,
+    "load5mPerCore": 0.2,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -32,7 +32,7 @@
       "detail": "health-monitor launchd"
     },
     "mail": {
-      "ok": true,
+      "ok": false,
       "detail": "gmail pubsub + send"
     },
     "tasks": {
@@ -46,12 +46,12 @@
       "url": "http://127.0.0.1:18789/"
     },
     "gmailPush": {
-      "subscriptionOk": true,
-      "trafficState": "stale",
-      "lastDeliveryStatus": "ok",
-      "lastDeliveryAtMs": 1770178210740,
-      "ageHours": 50.33,
-      "expirationMs": 1770733093994,
+      "subscriptionOk": false,
+      "trafficState": "unknown",
+      "lastDeliveryStatus": null,
+      "lastDeliveryAtMs": null,
+      "ageHours": null,
+      "expirationMs": 1770966871814,
       "topic": "projects/project-568d3d36-1fb8-462f-b8d/topics/gog-gmail-watch",
       "labels": [
         "INBOX"
@@ -59,27 +59,10 @@
     }
   },
   "notes": [
-    "gmail push traffic stale (>8h)"
+    "gmail push subscription not ok"
   ],
   "llmQuota": {
-    "ok": true,
-    "provider": "openai-codex",
-    "displayName": "Codex",
-    "plan": "plus ($0.00)",
-    "updatedAt": 1770361448505,
-    "windows": [
-      {
-        "label": "5h",
-        "usedPercent": 6,
-        "remainPercent": 94,
-        "resetAt": 1770370506000
-      },
-      {
-        "label": "Day",
-        "usedPercent": 40,
-        "remainPercent": 60,
-        "resetAt": 1770685673000
-      }
-    ]
+    "ok": false,
+    "detail": "no providers"
   }
 }
