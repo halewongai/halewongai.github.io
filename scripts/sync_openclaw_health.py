@@ -13,6 +13,7 @@ This is a lightweight status page; no secrets.
 """
 
 import json
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -47,6 +48,54 @@ def load_health():
     return json.loads(SRC.read_text(encoding="utf-8"))
 
 
+def load_llm_quota() -> dict:
+    """Fetch model quota/usage snapshot for status page.
+
+    Uses OpenClaw CLI (read-only). Safe to publish: contains only percentages + reset times.
+    """
+    try:
+        p = subprocess.run(
+            ["openclaw", "status", "--usage", "--json"],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=20,
+        )
+        j = json.loads(p.stdout)
+        usage = j.get("usage") or {}
+        providers = usage.get("providers") or []
+        # take the first provider (usually openai-codex)
+        if not providers:
+            return {"ok": False, "detail": "no providers"}
+        pr = providers[0]
+        windows = pr.get("windows") or []
+        out = {
+            "ok": True,
+            "provider": pr.get("provider"),
+            "displayName": pr.get("displayName"),
+            "plan": pr.get("plan"),
+            "updatedAt": usage.get("updatedAt"),
+            "windows": [],
+        }
+        for w in windows:
+            used = w.get("usedPercent")
+            try:
+                used_i = int(used)
+            except Exception:
+                used_i = None
+            out["windows"].append(
+                {
+                    "label": w.get("label"),
+                    "usedPercent": used_i,
+                    "remainPercent": (None if used_i is None else max(0, 100 - used_i)),
+                    "resetAt": w.get("resetAt"),
+                }
+            )
+        return out
+    except Exception as e:
+        return {"ok": False, "detail": str(e)}
+
+
 def sev_color(sev: str) -> str:
     return {
         "ok": "#2ecc71",
@@ -68,6 +117,7 @@ def render(lang: str, h: dict) -> str:
     systems = h.get("systems", {})
     modules = h.get("modules", {})
     integrations = h.get("integrations", {})
+    llm = h.get("llmQuota", {}) or {}
     notes = h.get("notes", []) or []
 
     def yn(v):
@@ -143,6 +193,7 @@ def render(lang: str, h: dict) -> str:
         <div class='body'>
           <div class='kv'>
             <div class='k'>updatedAt</div><div class='mono'>{updated}</div>
+            <div class='k'>LLM quota</div><div class='mono'>{llm_quota_line}</div>
             <div class='k'>disk free</div><div class='mono'>{disk_pct}% ({disk_gb} GB)</div>
             <div class='k'>memory</div><div class='mono'>{mem_used} / {mem_total} GB (avail {mem_avail} GB)</div>
             <div class='k'>loadavg</div><div class='mono'>{loadavg} (5m/core: {load_ratio})</div>
@@ -211,6 +262,21 @@ def render(lang: str, h: dict) -> str:
         loadavg=esc(str(host.get("loadavg", "-"))),
         load_ratio=esc(str(host.get("load5mPerCore", "-"))),
         swap=esc(str(host.get("swapUsedMB", "-"))),
+        llm_quota_line=esc(
+            "-"
+            if not llm.get("ok")
+            else " | ".join(
+                [
+                    (
+                        f"{w.get('label')}: {w.get('remainPercent')}% left"
+                        if not is_zh
+                        else f"{w.get('label')}: 剩余 {w.get('remainPercent')}%"
+                    )
+                    for w in (llm.get("windows") or [])
+                    if w.get("remainPercent") is not None
+                ]
+            )
+        ),
         systems_title=("子系统" if is_zh else "Systems"),
         modules_title=("重要功能组件" if is_zh else "Key components"),
         name=("名称" if is_zh else "Name"),
@@ -226,6 +292,7 @@ def render(lang: str, h: dict) -> str:
 
 def main():
     h = load_health()
+    h["llmQuota"] = load_llm_quota()
 
     (REPO / "status").mkdir(parents=True, exist_ok=True)
     (REPO / "zh" / "status").mkdir(parents=True, exist_ok=True)
