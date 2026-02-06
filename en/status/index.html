@@ -6,7 +6,7 @@
   <title>Status · Assistant No.1</title>
   <link rel='stylesheet' href='/assets/style.css' />
   <style>
-    .sev-dot { display:inline-block; width:10px; height:10px; border-radius:50%; background:#f1c40f; margin-right:8px; }
+    .sev-dot { display:inline-block; width:10px; height:10px; border-radius:50%; background:#2ecc71; margin-right:8px; }
     .kv { display:grid; grid-template-columns:160px 1fr; gap:8px 12px; }
     .tbl { width:100%; border-collapse:collapse; }
     .tbl td, .tbl th { border-bottom:1px solid rgba(255,255,255,0.08); padding:10px 8px; text-align:left; }
@@ -34,14 +34,14 @@
 
     <div class='grid'>
       <section class='card' style='grid-column:1/-1'>
-        <h2 style='margin-top:0'><span class='sev-dot'></span>Overall: warn</h2>
+        <h2 style='margin-top:0'><span class='sev-dot'></span>Overall: ok</h2>
         <div class='body'>
           <div class='kv'>
-            <div class='k'>updatedAt</div><div class='mono'>2026-02-06 16:30:04 HKT</div>
-            <div class='k'>LLM quota</div><div class='mono'>-</div>
+            <div class='k'>updatedAt</div><div class='mono'>2026-02-06 16:57:05 HKT</div>
+            <div class='k'>LLM quota</div><div class='mono'>5h: 60% left | Day: 50% left</div>
             <div class='k'>disk free</div><div class='mono'>74.7% (170.6 GB)</div>
-            <div class='k'>memory</div><div class='mono'>9.5 / 16.0 GB (avail 6.5 GB)</div>
-            <div class='k'>loadavg</div><div class='mono'>1.46 1.90 2.08 (5m/core: 0.19)</div>
+            <div class='k'>memory</div><div class='mono'>9.4 / 16.0 GB (avail 6.6 GB)</div>
+            <div class='k'>loadavg</div><div class='mono'>2.02 1.76 1.72 (5m/core: 0.18)</div>
             <div class='k'>swap used</div><div class='mono'>0.00 MB</div>
           </div>
         </div>
@@ -56,7 +56,7 @@
               <tr><td>Self-heal</td><td class='mono'>OK</td><td class='mono'>network-watchdog launchd</td></tr>
 <tr><td>Logging</td><td class='mono'>OK</td><td class='mono'>desktop log + pages sync</td></tr>
 <tr><td>Monitoring</td><td class='mono'>OK</td><td class='mono'>health-monitor launchd</td></tr>
-<tr><td>Mail</td><td class='mono'>BAD</td><td class='mono'>gmail pubsub + send</td></tr>
+<tr><td>Mail</td><td class='mono'>OK</td><td class='mono'>gmail pubsub + send</td></tr>
 <tr><td>Tasks</td><td class='mono'>OK</td><td class='mono'>local tasks.json + pages</td></tr>
             </tbody>
           </table>
@@ -71,7 +71,7 @@
             <tbody>
               <tr><td>VPN/Proxy</td><td class='mono'>OK</td><td class='mono'>mihomo 127.0.0.1:7890</td></tr>
 <tr><td>Gateway</td><td class='mono'>OK</td><td class='mono'>http://127.0.0.1:18789/</td></tr>
-<tr><td>Gmail Push Subscription</td><td class='mono'>BAD</td><td class='mono'>watch status</td></tr>
+<tr><td>Gmail Push Subscription</td><td class='mono'>OK</td><td class='mono'>watch status</td></tr>
 <tr><td>Gmail Push Traffic</td><td class='mono'>unknown</td><td class='mono'>freshness (soft)</td></tr>
             </tbody>
           </table>
@@ -80,7 +80,7 @@
 
       <section class='card' style='grid-column:1/-1'>
         <h2>Notes</h2>
-        <div class='body'><ul><li>gmail push subscription not ok</li></ul></div>
+        <div class='body'><ul><li>none</li></ul></div>
       </section>
 
       <section class='card' style='grid-column:1/-1'>

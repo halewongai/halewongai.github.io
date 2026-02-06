@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-06 16:30:04 HKT",
-  "severity": "warn",
+  "updatedAt": "2026-02-06 16:57:05 HKT",
+  "severity": "ok",
   "host": {
     "diskFreeGB": 170.6,
     "diskFreePct": 74.7,
-    "memUsedGB": 9.5,
-    "memAvailGB": 6.5,
+    "memUsedGB": 9.4,
+    "memAvailGB": 6.6,
     "memTotalGB": 16.0,
-    "loadavg": "1.46 1.90 2.08",
+    "loadavg": "2.02 1.76 1.72",
     "cpuCores": 10,
-    "load5mPerCore": 0.19,
+    "load5mPerCore": 0.18,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -32,7 +32,7 @@
       "detail": "health-monitor launchd"
     },
     "mail": {
-      "ok": false,
+      "ok": true,
       "detail": "gmail pubsub + send"
     },
     "tasks": {
@@ -46,7 +46,7 @@
       "url": "http://127.0.0.1:18789/"
     },
     "gmailPush": {
-      "subscriptionOk": false,
+      "subscriptionOk": true,
       "trafficState": "unknown",
       "lastDeliveryStatus": null,
       "lastDeliveryAtMs": null,
@@ -58,11 +58,26 @@
       ]
     }
   },
-  "notes": [
-    "gmail push subscription not ok"
-  ],
+  "notes": [],
   "llmQuota": {
-    "ok": false,
-    "detail": "no providers"
+    "ok": true,
+    "provider": "openai-codex",
+    "displayName": "Codex",
+    "plan": "plus ($0.00)",
+    "updatedAt": 1770368243611,
+    "windows": [
+      {
+        "label": "5h",
+        "usedPercent": 40,
+        "remainPercent": 60,
+        "resetAt": 1770370506000
+      },
+      {
+        "label": "Day",
+        "usedPercent": 50,
+        "remainPercent": 50,
+        "resetAt": 1770685673000
+      }
+    ]
   }
 }
