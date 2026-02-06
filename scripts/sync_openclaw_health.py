@@ -18,7 +18,10 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
-SRC = Path("/Users/hale/Library/Application Support/openclaw_state/health.json")
+# Source of truth is the Desktop mirror produced by health-monitor.
+# (The raw state is also written under /Users/hale/Library/Application Support/openclaw_state,
+# but the Desktop mirror is what our cron and ops conventionally treat as canonical.)
+SRC = Path("/Users/hale/Desktop/openclaw_state/health.json")
 REPO = Path(__file__).resolve().parents[1]
 OUT_JSON = REPO / "status" / "health.json"
 OUT_ZH = REPO / "zh" / "status" / "index.html"

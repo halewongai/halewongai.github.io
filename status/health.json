@@ -64,7 +64,7 @@
     "provider": "openai-codex",
     "displayName": "Codex",
     "plan": "plus ($0.00)",
-    "updatedAt": 1770381068903,
+    "updatedAt": 1770381095503,
     "windows": [
       {
         "label": "5h",
