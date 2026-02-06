@@ -13,6 +13,7 @@ This is a lightweight status page; no secrets.
 """
 
 import json
+import os
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -54,12 +55,18 @@ def load_llm_quota() -> dict:
     Uses OpenClaw CLI (read-only). Safe to publish: contains only percentages + reset times.
     """
     try:
+        env = dict(**os.environ)
+        # The OpenClaw agent auth/profile store lives under /var/root in this setup.
+        # When running as hale (cron), point HOME there so `openclaw status --usage` can see providers.
+        env.setdefault("HOME", "/var/root")
+
         p = subprocess.run(
             ["openclaw", "status", "--usage", "--json"],
             check=True,
             capture_output=True,
             text=True,
             timeout=20,
+            env=env,
         )
         j = json.loads(p.stdout)
         usage = j.get("usage") or {}
