@@ -18,6 +18,9 @@ from pathlib import Path
 
 # Source of truth: health-monitor output (root writes here, then syncs to Pages).
 SRC = Path("/Users/hale/Library/Application Support/openclaw_state/health.json")
+EMAIL_AGENT_STATE = Path(
+    "/Users/hale/Library/Application Support/openclaw_state/email_task_agent_ffdd93cc.json"
+)
 REPO = Path(__file__).resolve().parents[1]
 OUT_JSON = REPO / "status" / "health.json"
 OUT_ZH = REPO / "zh" / "status" / "index.html"
@@ -46,6 +49,26 @@ def load_health():
             "notes": ["health.json missing"],
         }
     return json.loads(SRC.read_text(encoding="utf-8"))
+
+
+def load_email_agent_state():
+    """Optional state file maintained by the email-first cron agent.
+
+    Schema (best-effort):
+      {
+        "jobId": "ffdd93cc-...",
+        "updatedAt": "...",
+        "lastRunAt": "...",
+        "runs24h": 3,
+        "lastError": "..." | ""
+      }
+    """
+    if not EMAIL_AGENT_STATE.exists():
+        return None
+    try:
+        return json.loads(EMAIL_AGENT_STATE.read_text(encoding="utf-8"))
+    except Exception:
+        return {"lastError": "email agent state parse error"}
 
 # NOTE: LLM quota is collected by the root health-monitor and written into health.json.
 # This publish script should not attempt to re-collect quota (cron PATH/HOME variance can
@@ -92,6 +115,25 @@ def render(lang: str, h: dict) -> str:
     rows_systems.append(("Logging" if not is_zh else "日志系统", yn(systems.get("logging", {}).get("ok")), systems.get("logging", {}).get("detail", "")))
     rows_systems.append(("Monitoring" if not is_zh else "监控系统", yn(systems.get("monitoring", {}).get("ok")), systems.get("monitoring", {}).get("detail", "")))
     rows_systems.append(("Mail" if not is_zh else "邮件系统", yn(systems.get("mail", {}).get("ok")), systems.get("mail", {}).get("detail", "")))
+
+    # Email-first task agent (cron: ffdd93cc-...)
+    ea = load_email_agent_state() or {}
+    ea_last = ea.get("lastRunAt") or "-"
+    ea_runs24h = ea.get("runs24h")
+    ea_err = ea.get("lastError") or ""
+    ea_detail_bits = [f"lastRun: {ea_last}"]
+    if ea_runs24h is not None:
+        ea_detail_bits.append(f"runs24h: {ea_runs24h}")
+    if ea_err:
+        ea_detail_bits.append(f"lastError: {ea_err}")
+    rows_systems.append(
+        (
+            "Email task agent" if not is_zh else "邮件任务 agent",
+            "OK" if ea and not ea_err else ("WARN" if ea_err else "-"),
+            "; ".join(ea_detail_bits),
+        )
+    )
+
     rows_systems.append(("Tasks" if not is_zh else "任务系统", yn(systems.get("tasks", {}).get("ok")), systems.get("tasks", {}).get("detail", "")))
 
     # Key components (重要功能组件)
