@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-13 05:30:03 HKT",
-  "severity": "ok",
+  "updatedAt": "2026-02-23 05:30:03 HKT",
+  "severity": "warn",
   "host": {
-    "diskFreeGB": 170.2,
-    "diskFreePct": 74.6,
-    "memUsedGB": 9.4,
-    "memAvailGB": 6.6,
+    "diskFreeGB": 157.0,
+    "diskFreePct": 68.8,
+    "memUsedGB": 8.5,
+    "memAvailGB": 7.5,
     "memTotalGB": 16.0,
-    "loadavg": "1.64 1.61 1.56",
+    "loadavg": "1.72 1.55 1.46",
     "cpuCores": 10,
-    "load5mPerCore": 0.16,
+    "load5mPerCore": 0.15,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -32,7 +32,7 @@
       "detail": "health-monitor launchd"
     },
     "mail": {
-      "ok": true,
+      "ok": false,
       "detail": "gmail pubsub + send"
     },
     "tasks": {
@@ -46,7 +46,7 @@
       "url": "http://127.0.0.1:18789/"
     },
     "gmailPush": {
-      "subscriptionOk": true,
+      "subscriptionOk": false,
       "trafficState": "unknown",
       "lastDeliveryStatus": null,
       "lastDeliveryAtMs": null,
@@ -58,13 +58,15 @@
       ]
     }
   },
-  "notes": [],
+  "notes": [
+    "gmail push subscription not ok"
+  ],
   "llmQuota": {
     "ok": true,
     "provider": "minimax",
     "displayName": "MiniMax",
     "plan": null,
-    "updatedAt": 1770931805478,
+    "updatedAt": 1771795805180,
     "windows": []
   }
 }
