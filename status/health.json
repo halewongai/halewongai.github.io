@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-03-20 05:30:02 HKT",
+  "updatedAt": "2026-03-21 05:30:04 HKT",
   "severity": "warn",
   "host": {
-    "diskFreeGB": 149.3,
+    "diskFreeGB": 149.2,
     "diskFreePct": 65.4,
-    "memUsedGB": 9.5,
-    "memAvailGB": 6.5,
+    "memUsedGB": 9.7,
+    "memAvailGB": 6.3,
     "memTotalGB": 16.0,
-    "loadavg": "1.12 1.49 1.46",
+    "loadavg": "2.27 1.82 1.67",
     "cpuCores": 10,
-    "load5mPerCore": 0.15,
+    "load5mPerCore": 0.18,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -62,11 +62,7 @@
     "gmail push subscription not ok"
   ],
   "llmQuota": {
-    "ok": true,
-    "provider": "minimax",
-    "displayName": "MiniMax",
-    "plan": null,
-    "updatedAt": 1773955804367,
-    "windows": []
+    "ok": false,
+    "detail": "Command '['openclaw', 'status', '--usage', '--json']' returned non-zero exit status 1."
   }
 }
