@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-03-22 05:30:02 HKT",
+  "updatedAt": "2026-03-23 05:30:03 HKT",
   "severity": "warn",
   "host": {
-    "diskFreeGB": 149.1,
+    "diskFreeGB": 149.0,
     "diskFreePct": 65.3,
-    "memUsedGB": 8.9,
-    "memAvailGB": 7.1,
+    "memUsedGB": 8.8,
+    "memAvailGB": 7.2,
     "memTotalGB": 16.0,
-    "loadavg": "1.71 1.55 1.53",
+    "loadavg": "1.65 1.57 1.51",
     "cpuCores": 10,
-    "load5mPerCore": 0.15,
+    "load5mPerCore": 0.16,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -66,7 +66,7 @@
     "provider": "minimax",
     "displayName": "MiniMax",
     "plan": null,
-    "updatedAt": 1774128604658,
+    "updatedAt": 1774215006220,
     "windows": []
   }
 }
