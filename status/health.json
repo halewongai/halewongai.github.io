@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-03-27 05:30:02 HKT",
+  "updatedAt": "2026-03-28 05:30:04 HKT",
   "severity": "warn",
   "host": {
     "diskFreeGB": 148.5,
-    "diskFreePct": 65.1,
+    "diskFreePct": 65.0,
     "memUsedGB": 10.0,
     "memAvailGB": 6.0,
     "memTotalGB": 16.0,
-    "loadavg": "1.43 1.52 1.57",
+    "loadavg": "1.52 1.47 1.48",
     "cpuCores": 10,
     "load5mPerCore": 0.15,
     "swapUsedMB": "0.00"
@@ -66,7 +66,7 @@
     "provider": "minimax",
     "displayName": "MiniMax",
     "plan": null,
-    "updatedAt": 1774560604861,
+    "updatedAt": 1774647007258,
     "windows": []
   }
 }
