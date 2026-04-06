@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-04-02 05:30:02 HKT",
+  "updatedAt": "2026-04-06 14:30:02 HKT",
   "severity": "warn",
   "host": {
     "diskFreeGB": 146.3,
     "diskFreePct": 64.1,
-    "memUsedGB": 9.6,
-    "memAvailGB": 6.4,
+    "memUsedGB": 9.7,
+    "memAvailGB": 6.3,
     "memTotalGB": 16.0,
-    "loadavg": "1.74 1.78 1.66",
+    "loadavg": "1.67 1.58 1.52",
     "cpuCores": 10,
-    "load5mPerCore": 0.18,
+    "load5mPerCore": 0.16,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -42,7 +42,7 @@
   },
   "integrations": {
     "gateway": {
-      "ok": true,
+      "ok": false,
       "url": "http://127.0.0.1:18789/"
     },
     "gmailPush": {
@@ -59,10 +59,28 @@
     }
   },
   "notes": [
+    "gateway down",
     "gmail push subscription not ok"
   ],
   "llmQuota": {
-    "ok": false,
-    "detail": "Command '['openclaw', 'status', '--usage', '--json']' returned non-zero exit status 1."
+    "ok": true,
+    "provider": "openai-codex",
+    "displayName": "Codex",
+    "plan": "plus ($0.00)",
+    "updatedAt": 1775457005837,
+    "windows": [
+      {
+        "label": "5h",
+        "usedPercent": 0,
+        "remainPercent": 100,
+        "resetAt": 1775475008000
+      },
+      {
+        "label": "Week",
+        "usedPercent": 7,
+        "remainPercent": 93,
+        "resetAt": 1775674821000
+      }
+    ]
   }
 }
