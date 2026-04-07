@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-04-07 05:30:01 HKT",
+  "updatedAt": "2026-04-08 05:30:02 HKT",
   "severity": "warn",
   "host": {
     "diskFreeGB": 144.8,
-    "diskFreePct": 63.4,
-    "memUsedGB": 8.8,
-    "memAvailGB": 7.2,
+    "diskFreePct": 63.5,
+    "memUsedGB": 9.0,
+    "memAvailGB": 7.0,
     "memTotalGB": 16.0,
-    "loadavg": "1.59 1.49 1.43",
+    "loadavg": "1.92 1.47 1.36",
     "cpuCores": 10,
     "load5mPerCore": 0.15,
     "swapUsedMB": "0.00"
@@ -66,18 +66,18 @@
     "provider": "openai-codex",
     "displayName": "Codex",
     "plan": "plus ($0.00)",
-    "updatedAt": 1775511003611,
+    "updatedAt": 1775597404221,
     "windows": [
       {
         "label": "5h",
-        "usedPercent": 5,
-        "remainPercent": 95,
-        "resetAt": 1775520016000
+        "usedPercent": 1,
+        "remainPercent": 99,
+        "resetAt": 1775606412000
       },
       {
         "label": "Week",
-        "usedPercent": 28,
-        "remainPercent": 72,
+        "usedPercent": 32,
+        "remainPercent": 68,
         "resetAt": 1775674821000
       }
     ]
