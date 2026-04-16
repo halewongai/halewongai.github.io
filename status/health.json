@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-04-16 05:30:04 HKT",
+  "updatedAt": "2026-04-17 05:30:04 HKT",
   "severity": "ok",
   "host": {
-    "diskFreeGB": 144.1,
-    "diskFreePct": 63.1,
-    "memUsedGB": 9.6,
-    "memAvailGB": 6.4,
+    "diskFreeGB": 143.7,
+    "diskFreePct": 62.9,
+    "memUsedGB": 9.5,
+    "memAvailGB": 6.5,
     "memTotalGB": 16.0,
-    "loadavg": "1.18 1.40 1.41",
+    "loadavg": "1.47 1.60 1.59",
     "cpuCores": 10,
-    "load5mPerCore": 0.14,
+    "load5mPerCore": 0.16,
     "swapUsedMB": "0.00"
   },
   "modules": {
@@ -51,7 +51,7 @@
       "lastDeliveryStatus": null,
       "lastDeliveryAtMs": null,
       "ageHours": null,
-      "expirationMs": 1776851430317,
+      "expirationMs": 1776976982053,
       "topic": "projects/project-568d3d36-1fb8-462f-b8d/topics/gog-gmail-watch",
       "labels": [
         "INBOX"
@@ -60,24 +60,7 @@
   },
   "notes": [],
   "llmQuota": {
-    "ok": true,
-    "provider": "openai-codex",
-    "displayName": "Codex",
-    "plan": "plus ($0.00)",
-    "updatedAt": 1776288606092,
-    "windows": [
-      {
-        "label": "5h",
-        "usedPercent": 1,
-        "remainPercent": 99,
-        "resetAt": 1776297611000
-      },
-      {
-        "label": "Week",
-        "usedPercent": 68,
-        "remainPercent": 32,
-        "resetAt": 1776366011000
-      }
-    ]
+    "ok": false,
+    "detail": "no providers"
   }
 }
