@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-04-21 05:30:02 HKT",
+  "updatedAt": "2026-04-22 05:30:01 HKT",
   "severity": "ok",
   "host": {
-    "diskFreeGB": 142.1,
-    "diskFreePct": 62.2,
-    "memUsedGB": 9.9,
-    "memAvailGB": 6.1,
+    "diskFreeGB": 142.3,
+    "diskFreePct": 62.3,
+    "memUsedGB": 9.6,
+    "memAvailGB": 6.4,
     "memTotalGB": 16.0,
-    "loadavg": "1.67 1.47 1.44",
+    "loadavg": "1.66 1.48 1.47",
     "cpuCores": 10,
     "load5mPerCore": 0.15,
     "swapUsedMB": "0.00"
@@ -51,7 +51,7 @@
       "lastDeliveryStatus": null,
       "lastDeliveryAtMs": null,
       "ageHours": null,
-      "expirationMs": 1777314359385,
+      "expirationMs": 1777409166059,
       "topic": "projects/project-568d3d36-1fb8-462f-b8d/topics/gog-gmail-watch",
       "labels": [
         "INBOX"
